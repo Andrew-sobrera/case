@@ -14,7 +14,6 @@ services:
       - laravel
     depends_on:
       - db
-      - redis
 
   nginx:
     image: nginx:alpine
@@ -43,15 +42,6 @@ services:
       - dbdata:/var/lib/mysql
     ports:
       - "3307:3306"
-    networks:
-      - laravel
-
-  redis:
-    image: redis:alpine
-    container_name: laravel_redis
-    restart: unless-stopped
-    ports:
-      - "6380:6379"
     networks:
       - laravel
 
