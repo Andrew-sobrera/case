@@ -23,6 +23,22 @@ class PermissionRepository implements PermissionRepositoryInterface
     {
         return Permission::where('name', $name)->first();
     }
+    
+    public function create(array $data): Permission
+    {
+        return Permission::create($data);
+    }
+    
+    public function update(Permission $permission, array $data): Permission
+    {
+        $permission->update($data);
+        return $permission->fresh();
+    }
+    
+    public function delete(Permission $permission): bool
+    {
+        return $permission->delete();
+    }
 
     public function getUserPermissions(User $user): Collection
     {

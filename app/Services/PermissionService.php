@@ -22,6 +22,21 @@ class PermissionService
     {
         return $this->permissionRepository->findById($id);
     }
+    
+    public function createPermission(array $data): Permission
+    {
+        return $this->permissionRepository->create($data);
+    }
+    
+    public function updatePermission(Permission $permission, array $data): Permission
+    {
+        return $this->permissionRepository->update($permission, $data);
+    }
+    
+    public function deletePermission(Permission $permission): bool
+    {
+        return $this->permissionRepository->delete($permission);
+    }
 
     public function getUserPermissions(User $user): Collection
     {
