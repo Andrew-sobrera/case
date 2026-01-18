@@ -25,7 +25,6 @@ class PermissionController
         $permissions = $this->permissionService->getAllPermissions();
         
         return response()->json([
-            'status' => 'success',
             'data' => $permissions
         ], 200);
     }
@@ -35,8 +34,6 @@ class PermissionController
         $permission = $this->permissionService->createPermission($request->validated());
         
         return response()->json([
-            'status' => 'success',
-            'message' => 'Permission created successfully',
             'data' => $permission
         ], 201);
     }
@@ -47,13 +44,11 @@ class PermissionController
         
         if (!$permission) {
             return response()->json([
-                'status' => 'error',
                 'message' => 'Permission not found'
             ], 404);
         }
         
         return response()->json([
-            'status' => 'success',
             'data' => $permission
         ], 200);
     }
@@ -64,7 +59,6 @@ class PermissionController
         
         if (!$permission) {
             return response()->json([
-                'status' => 'error',
                 'message' => 'Permission not found'
             ], 404);
         }
@@ -72,8 +66,6 @@ class PermissionController
         $updatedPermission = $this->permissionService->updatePermission($permission, $request->validated());
         
         return response()->json([
-            'status' => 'success',
-            'message' => 'Permission updated successfully',
             'data' => $updatedPermission
         ], 200);
     }
@@ -84,7 +76,6 @@ class PermissionController
         
         if (!$permission) {
             return response()->json([
-                'status' => 'error',
                 'message' => 'Permission not found'
             ], 404);
         }
@@ -92,7 +83,6 @@ class PermissionController
         $this->permissionService->deletePermission($permission);
         
         return response()->json([
-            'status' => 'success',
             'message' => 'Permission deleted successfully'
         ], 200);
     }
@@ -103,7 +93,6 @@ class PermissionController
         
         if (!$user) {
             return response()->json([
-                'status' => 'error',
                 'message' => 'User not found'
             ], 404);
         }
@@ -111,7 +100,6 @@ class PermissionController
         $permissions = $this->permissionService->getUserPermissions($user);
         
         return response()->json([
-            'status' => 'success',
             'data' => $permissions
         ], 200);
     }
@@ -122,7 +110,6 @@ class PermissionController
         
         if (!$user) {
             return response()->json([
-                'status' => 'error',
                 'message' => 'User not found'
             ], 404);
         }
@@ -131,7 +118,6 @@ class PermissionController
         
         if (!$permission) {
             return response()->json([
-                'status' => 'error',
                 'message' => 'Permission not found'
             ], 404);
         }
@@ -139,7 +125,6 @@ class PermissionController
         $this->permissionService->assignPermissionToUser($user, $permission);
         
         return response()->json([
-            'status' => 'success',
             'message' => 'Permission assigned successfully'
         ], 200);
     }
@@ -150,7 +135,6 @@ class PermissionController
         
         if (!$user) {
             return response()->json([
-                'status' => 'error',
                 'message' => 'User not found'
             ], 404);
         }
@@ -159,7 +143,6 @@ class PermissionController
         
         if (!$permission) {
             return response()->json([
-                'status' => 'error',
                 'message' => 'Permission not found'
             ], 404);
         }
@@ -167,7 +150,6 @@ class PermissionController
         $this->permissionService->revokePermissionFromUser($user, $permission);
         
         return response()->json([
-            'status' => 'success',
             'message' => 'Permission revoked successfully'
         ], 200);
     }

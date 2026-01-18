@@ -27,6 +27,14 @@ curl http://localhost:8000/api/health
 
 - **API**: http://localhost:8000/api
 
+## Postman Collection
+
+Na pasta `postman/` existe uma collection do Postman com todas as rotas da API. Para utilizá-la:
+
+1. Abra o Postman
+2. Importe o arquivo `postman/postman_collection.json`
+3. Todas as rotas estarão disponíveis para teste
+
 ## Principais Endpoints
 
 ```bash

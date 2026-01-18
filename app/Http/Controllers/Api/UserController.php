@@ -29,7 +29,6 @@ class UserController extends Controller
         $user = $this->userService->createUser($request->validated());
 
         return response()->json([
-            'message' => 'User created successfully',
             'user' => $user
         ], 201);
     }
@@ -62,7 +61,6 @@ class UserController extends Controller
         $user = $this->userService->updateUser($user, $request->validated());
 
         return response()->json([
-            'message' => 'User updated successfully',
             'user' => $user
         ]);
     }

@@ -21,7 +21,6 @@ class AddressController
         $addresses = $this->addressService->getAllAddresses();
         
         return response()->json([
-            'status' => 'success',
             'data' => $addresses
         ], 200);
     }
@@ -31,7 +30,6 @@ class AddressController
         $addresses = $this->addressService->getUserAddresses($userId);
         
         return response()->json([
-            'status' => 'success',
             'data' => $addresses
         ], 200);
     }
@@ -41,8 +39,6 @@ class AddressController
         $address = $this->addressService->createAddress($request->validated());
         
         return response()->json([
-            'status' => 'success',
-            'message' => 'Address created successfully',
             'data' => $address
         ], 201);
     }
@@ -53,13 +49,11 @@ class AddressController
         
         if (!$address) {
             return response()->json([
-                'status' => 'error',
                 'message' => 'Address not found'
             ], 404);
         }
         
         return response()->json([
-            'status' => 'success',
             'data' => $address
         ], 200);
     }
@@ -70,7 +64,6 @@ class AddressController
         
         if (!$address) {
             return response()->json([
-                'status' => 'error',
                 'message' => 'Address not found'
             ], 404);
         }
@@ -78,8 +71,6 @@ class AddressController
         $updatedAddress = $this->addressService->updateAddress($address, $request->validated());
         
         return response()->json([
-            'status' => 'success',
-            'message' => 'Address updated successfully',
             'data' => $updatedAddress
         ], 200);
     }
@@ -90,7 +81,6 @@ class AddressController
         
         if (!$address) {
             return response()->json([
-                'status' => 'error',
                 'message' => 'Address not found'
             ], 404);
         }
@@ -98,7 +88,6 @@ class AddressController
         $this->addressService->deleteAddress($address);
         
         return response()->json([
-            'status' => 'success',
             'message' => 'Address deleted successfully'
         ], 200);
     }
